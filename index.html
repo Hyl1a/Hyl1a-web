@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fenêtres style Windows - Multi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- =================== VIDÉO DE FOND =================== -->
+  <video autoplay muted loop id="background-video">
+    <source src="Video/background.mp4" type="video/mp4">
+  </video>
+
+  <!-- =================== MUSIQUE DE FOND =================== -->
+  <audio id="background-music" src="Video/Hip Shop.mp3" loop></audio>
+
+    <!-- =================== TITRE DU SITE =================== -->  
+
+  <img src="Image/title.png" alt="Titre du site" id="site-title-img">
+
+
+<div id="minecraft-title">
+  <span id="splash-text">Bienvenue sur mon site !</span>
+</div>
+
+
+
+  <!-- =================== FENÊTRE 1 =================== -->
+  <div class="window" id="window1">
+    <div class="title">
+      <span>💾 Fenêtre 1 - Presentation</span>
+      <div class="window-buttons">
+        <button class="minimize">-</button>
+        <button class="maximize">□</button>
+        <button class="close">×</button>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="home1">Accueil</button>
+      <button class="tab" data-tab="about1">À propos</button>
+      <button class="tab" data-tab="contact1">Projets à venir</button>
+    </div>
+
+    <div class="content">
+      <div class="tab-content active" id="home1">
+        <h1>Mon site retro // cyber core</h1>
+        <p>Hi, I’m Hyl1a. On this site, I want to share a bunch of my creations and passions. 
+        You’ll find things like my VHS-inspired videos, my drawings, and lots of other projects that I love working on. 
+        This is a place where I can showcase my creativity and explore new ideas, 
+        and I hope you enjoy exploring it as much as I enjoy building it!</p>
+        <div class="gif-container">
+          <img src="https://media1.tenor.com/m/lECDTv0FOSAAAAAd/dark-souls.gif" alt="GIF animation">
+        </div>
+      </div>
+
+      <div class="tab-content" id="about1">
+        <h1>Présentation de moi-même</h1>
+        <p>Ici je raconte un peu ma vie.</p>
+      </div>
+
+      <div class="tab-content" id="contact1">
+        <h1>À venir</h1>
+        <p>Peut-être du contenu futur ici.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =================== FENÊTRE 2 =================== -->
+  <div class="window" id="window2">
+    <div class="title">
+      <span>💾 Fenêtre 2 - To Do List</span>
+      <div class="window-buttons">
+        <button class="minimize">-</button>
+        <button class="maximize">□</button>
+        <button class="close">×</button>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="home2">À rajouter</button>
+      <button class="tab" data-tab="about2">À régler</button>
+    </div>
+
+    <div class="content">
+      <div class="tab-content active" id="home2">
+        <h1>Trucs cool à rajouter</h1>
+        <p>- Musique de fond<br>- Thème animé<br>- Gifs animés<br>- Animation des fenêtres</p>
+      </div>
+      <div class="tab-content" id="about2">
+        <h1>Trucs à régler</h1>
+        <p>- Bug de déplacement des fenêtres<br>- Police d’écriture à changer</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =================== FENÊTRE 3 =================== -->
+  <div class="window" id="window3">
+    <div class="title">
+      <span>💾 Fenêtre 3</span>
+      <div class="window-buttons">
+        <button class="minimize">-</button>
+        <button class="maximize">□</button>
+        <button class="close">×</button>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="home3">VHS 1</button>
+      <button class="tab" data-tab="about3">VHS 2</button>
+      <button class="tab" data-tab="contact3">VHS 3</button>
+    </div>
+
+    <div class="content">
+      <div class="tab-content active" id="home3">
+        <h1>Vagabond - Retro // Glitch Edition</h1>
+        <video width="100%" autoplay loop>
+            <source src="Video/VagabondVHS.mp4" type="video/mp4">
+    </video>
+      </div>
+      <div class="tab-content" id="about3">
+        <h1>Lain - Retro // Glitch Edition</h1>
+        <video width="100%" autoplay loop>
+            <source src="Video/LainVHS.mp4" type="video/mp4">
+    </video>
+      </div>
+      <div class="tab-content" id="contact3">
+        <h1>Greninja - Retro // Glitch Edition</h1>
+        <video width="100%" autoplay loop>
+            <source src="Video/GreninjaVHS.mp4" type="video/mp4">
+    </video>
+      </div>
+    </div>
+  </div>
+
+  <!-- =================== FENÊTRE 4 - MUSIQUE PLAYER =================== -->
+  <div class="window" id="window4">
+    <div class="title">
+      <span>🎵 Musique Player</span>
+      <div class="window-buttons">
+        <button class="minimize">-</button>
+        <button class="maximize">□</button>
+        <button class="close">×</button>
+      </div>
+    </div>
+    <div class="content">
+      <h1 id="music-title">Hip Shop.mp3</h1>
+      <p><span id="music-current">0:00</span> / <span id="music-duration">--:--</span></p>
+      <input type="range" id="music-progress" min="0" max="100" value="0">
+      <br><br>
+      <button id="music-toggle">Play</button>
+    </div>
+  </div>
+
+   <!-- =================== FENÊTRE 5 =================== -->
+  <div class="window" id="window5">
+    <div class="title">
+      <span>💾 Fenêtre 5 - Email</span>
+      <div class="window-buttons">
+        <button class="minimize">-</button>
+        <button class="maximize">□</button>
+        <button class="close">×</button>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="home5"> < me > </button>
+    </div>
+    <div class="content">
+      <div class="tab-content active" id="home5">
+        <p><b>Mail</b> : mohznrpo@gmail.com</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =================== SCRIPT =================== -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -6,6 +6,9 @@
   <title>Fenêtres style Windows - Multi</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
+
+
 <body>
 
   <!-- =================== VIDÉO DE FOND =================== -->
@@ -30,7 +33,7 @@
   <!-- =================== FENÊTRE 1 =================== -->
   <div class="window" id="window1">
     <div class="title">
-      <span>💾 Fenêtre 1 - Presentation</span>
+      <span>📍 Presentation</span>
       <div class="window-buttons">
         <button class="minimize">-</button>
         <button class="maximize">□</button>
@@ -46,13 +49,13 @@
 
     <div class="content">
       <div class="tab-content active" id="home1">
-        <h1>Mon site retro // cyber core</h1>
-        <p>Hi, I’m Hyl1a. On this site, I want to share a bunch of my creations and passions. 
+        
+        <p>Hi, I’m <b>Hyl1a</b>.<br> On this site, I want to share a bunch of my <b>creations</b> and <b>passions</b>. 
         You’ll find things like my VHS-inspired videos, my drawings, and lots of other projects that I love working on. 
         This is a place where I can showcase my creativity and explore new ideas, 
         and I hope you enjoy exploring it as much as I enjoy building it!</p>
         <div class="gif-container">
-          <img src="https://media1.tenor.com/m/lECDTv0FOSAAAAAd/dark-souls.gif" alt="GIF animation">
+          <img src="https://i.makeagif.com/media/2-04-2025/devGnK.gif" alt="GIF animation">
         </div>
       </div>
 
@@ -71,7 +74,7 @@
   <!-- =================== FENÊTRE 2 =================== -->
   <div class="window" id="window2">
     <div class="title">
-      <span>💾 Fenêtre 2 - To Do List</span>
+      <span>📓 To Do List</span>
       <div class="window-buttons">
         <button class="minimize">-</button>
         <button class="maximize">□</button>
@@ -99,7 +102,7 @@
   <!-- =================== FENÊTRE 3 =================== -->
   <div class="window" id="window3">
     <div class="title">
-      <span>💾 Fenêtre 3</span>
+      <span>📼 VHS</span>
       <div class="window-buttons">
         <button class="minimize">-</button>
         <button class="maximize">□</button>
@@ -135,29 +138,46 @@
     </div>
   </div>
 
-  <!-- =================== FENÊTRE 4 - MUSIQUE PLAYER =================== -->
-  <div class="window" id="window4">
-    <div class="title">
-      <span>🎵 Musique Player</span>
-      <div class="window-buttons">
-        <button class="minimize">-</button>
-        <button class="maximize">□</button>
-        <button class="close">×</button>
-      </div>
-    </div>
-    <div class="content">
-      <h1 id="music-title">Hip Shop.mp3</h1>
-      <p><span id="music-current">0:00</span> / <span id="music-duration">--:--</span></p>
-      <input type="range" id="music-progress" min="0" max="100" value="0">
-      <br><br>
-      <button id="music-toggle">Play</button>
+<!-- =================== FENÊTRE 4 - MUSIQUE PLAYER =================== -->
+<div class="window" id="window4">
+  <div class="title">
+    <span>🎵 Music Player</span>
+    <div class="window-buttons">
+      <button class="minimize">-</button>
+      <button class="maximize">□</button>
+      <button class="close">×</button>
     </div>
   </div>
 
-   <!-- =================== FENÊTRE 5 =================== -->
+  <div class="content player">
+    <div class="player-cover">
+      <img id="music-cover" src="Audio/covers/default.png" alt="cover">
+    </div>
+
+    <div class="player-info">
+      <h1 id="music-title">No track</h1>
+      <p id="music-artist">–</p>
+
+      <div class="player-controls">
+        <button id="music-toggle">▶</button>
+        <button id="music-skip">⏭</button>
+      </div>
+
+      <div class="player-progress">
+        <input type="range" id="music-progress" min="0" max="100" value="0">
+        <div class="time">
+          <span id="music-current">0:00</span> / <span id="music-duration">--:--</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+   <!-- =================== FENÊTRE 5 EMAIL =================== -->
   <div class="window" id="window5">
     <div class="title">
-      <span>💾 Fenêtre 5 - Email</span>
+      <span>📧 Email</span>
       <div class="window-buttons">
         <button class="minimize">-</button>
         <button class="maximize">□</button>
@@ -166,7 +186,7 @@
     </div>
 
     <div class="tabs">
-      <button class="tab active" data-tab="home5"> < me > </button>
+      <button class="tab active" data-tab="home5"> < me 2 > </button>
     </div>
     <div class="content">
       <div class="tab-content active" id="home5">
@@ -175,6 +195,126 @@
     </div>
   </div>
 
+   <!-- =================== FENÊTRE 6 =================== -->
+  <div class="window" id="window6">
+    <div class="title">
+      <span>📧 Bio</span>
+      <div class="window-buttons">
+        <button class="minimize">-</button>
+        <button class="maximize">□</button>
+        <button class="close">×</button>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="home6"> < me 1 > </button>
+    </div>
+    <div class="content">
+      <div class="tab-content active" id="home6">
+        <p><b>Username</b> : HYL1A<br>
+            <b>Age</b> : 19<br>
+            <b>Pronouns</b> : he/him<br>
+            <b>Location</b> : France<br>
+            <b>Studies</b> : Computer Science student<br>
+            <b>Hobbies</b> : Video games, music, programming, drawing<br>
+            <b>Favorite Quote</b> : "You've met a terrible fate, haven't you?"</p>
+      </div>
+    </div>
+  </div>
+
+<!-- =================== FENÊTRE 7 - dessin =================== -->
+<div class="window" id="window7">
+  <div class="title">
+    <span>📼 VHS</span>
+    <div class="window-buttons">
+      <button class="minimize">-</button>
+      <button class="maximize">□</button>
+      <button class="close">×</button>
+    </div>
+  </div>
+
+  <!-- Onglets -->
+  <div class="tabs">
+    <button class="tab active" data-tab="home7">Dessin 1</button>
+    <button class="tab" data-tab="about7">Dessin 2</button>
+    <button class="tab" data-tab="contact7">Dessin 3</button>
+  </div>
+
+  <div class="content">
+    <div class="tab-content active" id="home7">
+      <h1>JJK</h1>
+      <img class="animated-image" src="Image/dessin1.png" alt="Animation JJK">
+    </div>
+    <div class="tab-content" id="about7">
+      <h1>Zelda</h1>
+      <img class="animated-image" src="Image/dessin2.jpg" alt="Animation Zelda">
+    </div>
+    <div class="tab-content" id="contact7">
+      <h1>Vagabond</h1>
+      <img class="animated-image" src="Image/dessin3.png" alt="Animation Vagabond">
+    </div>
+  </div>
+</div>
+
+
+ <!-- =================== FENÊTRE 8 =================== -->
+  <div class="window" id="window8">
+    <div class="title">
+      <span>Z E L D A</span>
+      <div class="window-buttons">
+        <button class="minimize">-</button>
+        <button class="maximize">□</button>
+        <button class="close">×</button>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="gif-container">
+          <img src="https://c.tenor.com/eKhJTtKQGnsAAAAd/tenor.gif" alt="GIF animation">
+        </div>
+    </div>
+  </div>
+
+   <!-- =================== TASKBAR WINDOWS XP =================== -->
+  <div id="taskbar">
+    <div class="taskbar-left">
+      <button id="start-button">🪟 Start</button>
+      <div id="start-menu">
+        <ul>
+          <li>Programs
+            <ul>
+              <li>Accessories</li>
+              <li>Games</li>
+              <li>MSN Explorer</li>
+            </ul>
+          </li>
+          <li>Documents</li>
+          <li>Settings
+            <ul>
+              <li>Control Panel</li>
+              <li>Printers</li>
+            </ul>
+          </li>
+          <li>Find</li>
+          <li>Help</li>
+          <li>Run...</li>
+          <li>Shut Down...</li>
+        </ul>
+      </div>
+    </div>
+    <div class="taskbar-center">
+      <span class="taskbar-window">📍 Presentation</span>
+      <span class="taskbar-window">📓 To Do List</span>
+      <span class="taskbar-window">📼 VHS</span>
+      <span class="taskbar-window">🎵 Music Player</span>
+      <span class="taskbar-window">📧 Email</span>
+      <span class="taskbar-window">📧 Bio</span>
+    </div>
+    <div class="taskbar-right">
+      <span id="taskbar-time"></span>
+    </div>
+  </div>
+  
 
   <!-- =================== SCRIPT =================== -->
   <script src="script.js"></script>

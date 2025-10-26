@@ -125,57 +125,124 @@ document.addEventListener('mouseup', stopDrag);
 document.addEventListener('touchend', stopDrag);
 
 // ---------------- Musique ----------------
-const music = document.getElementById("background-music");
-const musicToggle = document.getElementById("music-toggle");
-const progressBar = document.getElementById("music-progress");
-const currentTimeDisplay = document.getElementById("music-current");
-const durationDisplay = document.getElementById("music-duration");
-const trackName = document.getElementById("music-title");
 
-if (music) {
-  music.volume = 0.3;
-
-  // Titre propre
-  if (trackName) trackName.textContent = decodeURIComponent(music.src.split("/").pop());
-
-  // Durée totale
-  music.addEventListener("loadedmetadata", () => {
-    if (durationDisplay) {
-      const m = Math.floor(music.duration / 60);
-      const s = Math.floor(music.duration % 60).toString().padStart(2, '0');
-      durationDisplay.textContent = `${m}:${s}`;
-    }
-  });
-
-  // Progression
-  music.addEventListener("timeupdate", () => {
-    if (progressBar) progressBar.value = (music.currentTime / music.duration) * 100 || 0;
-    if (currentTimeDisplay) {
-      const m = Math.floor(music.currentTime / 60);
-      const s = Math.floor(music.currentTime % 60).toString().padStart(2, '0');
-      currentTimeDisplay.textContent = `${m}:${s}`;
-    }
-  });
-
-  if (progressBar) {
-    progressBar.addEventListener("input", () => {
-      music.currentTime = (progressBar.value / 100) * music.duration;
-    });
+// Playlist locale + covers
+const playlist = [
+  {
+    src: "Audio/Customize.mp3",
+    title: "Customize",
+    artist: "Rafflesia Online",
+    cover: "Audio/covers/customize.jpg"
+  },
+  {
+    src: "Audio/Eshop.mp3",
+    title: "Eshop Theme",
+    artist: "Kazumi Totaka",
+    cover: "Audio/covers/Eshop.jpg"
+  },
+  {
+    src: "Audio/Hip Shop.mp3",
+    title: "Hip Shop",
+    artist: "Toby Fox",
+    cover: "Audio/covers/hipshop.jpg"
+  },
+  {
+    src: "Audio/Takeshi Abo.mp3",
+    title: "Takeshi Abo",
+    artist: "Steins;Gate",
+    cover: "Audio/covers/takeshi.jpg"
+  },
+  {
+    src: "Audio/yume 2kki.mp3",
+    title: "Yume 2kki Theme",
+    artist: "Fan OST",
+    cover: "Audio/covers/yume.jpg"
   }
+];
+
+let currentTrackIndex = Math.floor(Math.random() * playlist.length);
+const music = new Audio(playlist[currentTrackIndex].src);
+music.volume = 0.4;
+
+const titleEl = document.getElementById("music-title");
+const artistEl = document.getElementById("music-artist");
+const coverEl = document.getElementById("music-cover");
+const toggleBtn = document.getElementById("music-toggle");
+const skipBtn = document.getElementById("music-skip");
+const progressEl = document.getElementById("music-progress");
+const currentEl = document.getElementById("music-current");
+const durationEl = document.getElementById("music-duration");
+
+// Chargement de la musique
+function loadTrack(i) {
+  const track = playlist[i];
+  music.src = track.src;
+  titleEl.textContent = track.title;
+  artistEl.textContent = track.artist;
+  coverEl.src = track.cover;
+  music.load();
+  music.play();
+  toggleBtn.textContent = "⏸";
 }
 
-// Play / Pause
-if (musicToggle && music) {
-  musicToggle.addEventListener("click", () => {
-    if (music.paused) {
-      music.play();
-      musicToggle.textContent = "Pause";
-    } else {
-      music.pause();
-      musicToggle.textContent = "Play";
-    }
-  });
-}
+// Play/Pause
+toggleBtn.addEventListener("click", () => {
+  if (music.paused) {
+    music.play();
+    toggleBtn.textContent = "⏸";
+  } else {
+    music.pause();
+    toggleBtn.textContent = "▶";
+  }
+});
+
+// Skip aléatoire
+skipBtn.addEventListener("click", () => {
+  let next;
+  do {
+    next = Math.floor(Math.random() * playlist.length);
+  } while (next === currentTrackIndex);
+  currentTrackIndex = next;
+  loadTrack(currentTrackIndex);
+});
+
+// Progression
+music.addEventListener("timeupdate", () => {
+  if (!isNaN(music.duration)) {
+    progressEl.value = (music.currentTime / music.duration) * 100;
+    const m = Math.floor(music.currentTime / 60);
+    const s = Math.floor(music.currentTime % 60).toString().padStart(2, "0");
+    currentEl.textContent = `${m}:${s}`;
+  }
+});
+
+music.addEventListener("loadedmetadata", () => {
+  const m = Math.floor(music.duration / 60);
+  const s = Math.floor(music.duration % 60).toString().padStart(2, "0");
+  durationEl.textContent = `${m}:${s}`;
+});
+
+progressEl.addEventListener("input", () => {
+  music.currentTime = (progressEl.value / 100) * music.duration;
+});
+
+music.addEventListener("ended", () => {
+  skipBtn.click();
+});
+
+// Démarrage
+loadTrack(currentTrackIndex);
+
+document.addEventListener("click", () => {
+  if (music.paused) {
+    music.play().then(() => {
+      toggleBtn.textContent = "⏸";
+    }).catch(err => console.log("Lecture bloquée :", err));
+  }
+}, { once: true });
+
+
+
 
 // ---------------- Auto-alternance Onglets ----------------
 const autoTabs = document.querySelectorAll('#window3 .tab');
@@ -215,3 +282,48 @@ setInterval(() => {
   const randomIndex = Math.floor(Math.random() * splashes.length);
   splashText.textContent = splashes[randomIndex];
 }, 5000); // change toutes les 5s
+
+
+function updateTaskbarTime() {
+  const timeEl = document.getElementById("taskbar-time");
+  const now = new Date();
+  const h = now.getHours().toString().padStart(2,'0');
+  const m = now.getMinutes().toString().padStart(2,'0');
+  timeEl.textContent = `${h}:${m}`;
+}
+setInterval(updateTaskbarTime, 1000);
+updateTaskbarTime();
+
+
+const startBtn = document.getElementById("start-button");
+const startMenu = document.getElementById("start-menu");
+const clock = document.getElementById("clock");
+
+// Ouvrir / fermer le menu
+startBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  startMenu.style.display = startMenu.style.display === "block" ? "none" : "block";
+});
+
+// Fermer si clic en dehors
+document.addEventListener("click", () => {
+  startMenu.style.display = "none";
+});
+
+// Horloge fonctionnelle
+function updateClock() {
+  const now = new Date();
+  let hours = now.getHours();
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  const ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12;
+  hours = hours ? hours : 12; // 0 => 12
+  clock.textContent = `${hours}:${minutes} ${ampm}`;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+
+
+
+

@@ -1,17 +1,17 @@
 /* ------------------------ Variables ------------------------ */
 :root {
-    --hyl1a-inactive-color: #b6bcbdce;
-    --hyl1a-outer-color: #8f7891;
-    --hyl1a-inner-color: #EDD0EE;
-    --hyl1a-border-color: #5c1b88;
-    --hyl1a-window-text-color: #70336d;
-    --hyl1a-window-text-back: #dfc7df;
-    --hyl1a-username-color: #a0add4;
-    --hyl1a-button-color: #8a0e9b;
-    --hyl1a-task-color: #F3E1F7;
-    --hyl1a-scrollbar-inner-color: #DB8ED6;
-    --hyl1a-scrollbar-inner-hover-color: #B471B0;
-    --hyl1a-scrollbar-outer-color: #C5EAFC;
+    --hyl1a-inactive-color: #7b9ae4;  /* Couleur de fond des fenêtres et onglets inactifs */
+    --hyl1a-outer-color: #787d91; /* Couleur de fond des fenêtres et onglets au survol */
+    --hyl1a-inner-color: #c6d8e798; /* Couleur de fond des fenêtres et onglets actifs */
+    --hyl1a-border-color: #2e3a86; /* Couleur des bordures des fenêtres et onglets */
+    --hyl1a-window-text-color: #000000; /* Couleur du texte dans les fenêtres */
+    --hyl1a-window-text-back: #e2f6fd; /* Couleur de fond du texte dans les fenêtres */
+    --hyl1a-username-color: #a0add4; /* Couleur des noms d'utilisateur */
+    --hyl1a-button-color: #8a0e9b; /* Couleur des boutons */
+    --hyl1a-task-color: #F3E1F7; /* Couleur des tâches */ 
+    --hyl1a-scrollbar-inner-color: #DB8ED6; /* Couleur de la barre de défilement */
+    --hyl1a-scrollbar-inner-hover-color: #B471B0; /* Couleur de la barre de défilement au survol */
+    --hyl1a-scrollbar-outer-color: #C5EAFC; /* Couleur de fond de la barre de défilement */
 }
 
 /* ------------------------ Curseur et police ------------------------ */
@@ -41,7 +41,7 @@ body {
   border: 2px solid var(--hyl1a-border-color);
   background: var(--hyl1a-inactive-color);
   padding: 4px;
-  box-shadow: 4px 4px rgba(80, 20, 255, 0.2);
+  box-shadow: 4px 4px rgba(36, 20, 255, 0.781);
   position: absolute;
 }
 
@@ -62,40 +62,128 @@ body {
 /* ------------------------ Position des fenêtres ------------------------ */
 #window1 {
   width: 50%;
-  height: 48%;
-  top: 28%;
+  height: 39%;
+  top: 15%;
   left: 465px;
+  padding: 5px;
+
 }
 
 #window2 {
   width: 23%;
+  padding: 5px;
   height: 21%;
-  top: 20%;
+  top: 70%;
   left: 0%; /* visible à droite */
 }
 
 #window3 {
   width: 23%;
   height: 52%;
-  top: 20%;    /* un peu plus bas que #window2 */
-  left: 76%;   /* à droite */
+  top: 15.5%;    /* un peu plus bas que #window2 */
+  left: 0%;   /* à droite */
+  padding: 5px;
+
 }
 
 #window4 {
-  width: 50%;
+  width: 23%;
+  padding: 5px;
   height: auto;         /* s’adapte au contenu */
   max-height: 150px;    /* ne dépasse pas une certaine hauteur */
-  top: 15%;
-  left: 465px;
+  top: 3%;
+  left: 0%;
 }
 
 #window5 {
-  overflow: hidden;  /* cache le contenu qui dépasse */
   padding: 5px;
   width: 23%;
   height: 8%;
-  top: 43%;
-  left: 0%; /* visible à droite */
+  top: 65.5%;
+  left: 76%; /* visible à droite */
+}
+
+#window6 {
+  padding: 5px;
+  width: 23%;
+  height: 28%;
+  top: 35%;
+  left: 76%; /* visible à droite */
+}
+
+#window7 {
+  width: 50%;
+  height: auto;
+  top: 56.5%;
+  left: 465px;
+  padding: 5px;
+
+}
+
+/* ------------------------------------------------ */
+
+#window8 {
+  width: 15%;
+  padding: 5px;
+  height: auto;
+  top: 2%;
+  left: 84%; /* visible à droite */
+  
+}
+
+#window8 .gif-container img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  display: block;
+  margin: 0 auto; 
+}
+
+#window8 .content {
+  padding: 0;      /* supprime le padding */
+}
+
+#window8 .gif-container {
+  margin: 0;       /* supprime tout margin */
+}
+
+#window8 .gif-container img {
+  display: block;
+  margin: 0 auto;  /* centre horizontalement */
+  max-width: 100%;
+  max-height: 150px;
+  width: auto;
+  height: auto;
+}
+
+/* ------------------------------------------------ */
+
+
+
+.animated-image {
+    display: block;
+    margin: auto;            /* centre horizontalement */
+    max-width: 90%;          /* limite largeur à 90% de la fenêtre */
+    max-height: 90%;         /* limite hauteur à 90% de la fenêtre */
+    width: auto;             /* garde les proportions */
+    height: auto;            /* garde les proportions */
+    image-rendering: pixelated; /* effet pixel art */
+}
+
+
+/* ------------------------------------------------ */
+
+
+#window1 .content p {
+    margin: 0;     /* SOLUTION ENFINNNNNNNNNNNNNN */
+    padding: 0;    
+}
+
+
+#window6 .content p {
+    margin: 0;     
+    padding: 0;    
 }
 
 #window5 .content {
@@ -105,7 +193,7 @@ body {
 }
 
 #window5 .content p {
-    margin: 0;     /* SOLUTION ENFINNNNNNNNNNNNNN */
+    margin: 0;     
     padding: 0;    
 }
 
@@ -116,8 +204,8 @@ body {
   background: var(--hyl1a-inactive-color);
   color: var(--hyl1a-window-text-color);
   font-weight: bold;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 18px;
   cursor: pointer;
   margin-left: 2px;
   padding: 0;
@@ -204,7 +292,7 @@ p {
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  filter: blur(2px);
+  filter: blur(0px);
   pointer-events: none;
 }
 
@@ -224,6 +312,10 @@ p {
   color: var(--hyl1a-window-text-color);
   font-weight: bold;
   font-family: "PixelFont", monospace;
+  position: absolute;               
+  left: 45%;
+  top: 30%;           
+  margin: 0;
 
 }
 
@@ -241,7 +333,7 @@ p {
   height: 5px;        /* hauteur plus visible */
   border-radius: 6px;  /* arrondi pour le style */
   background-color: #E2E2E2;   /* couleur de fond de la barre */
-  accent-color: #8a0e9b;       /* couleur de la partie remplie (pour Chrome, Edge, Firefox récent) */
+  accent-color: #100e9b;       /* couleur de la partie remplie (pour Chrome, Edge, Firefox récent) */
   cursor: pointer;
   margin: 10px 0;
 }
@@ -311,18 +403,21 @@ p {
 }
 
 #site-title-img {
-  position: absolute;      /* reste toujours visible en haut */
-  top: 10px;            /* distance du haut */
-  left: 50%;            /* centré horizontalement */
+  display: block !important;        /* pour éviter les inline par défaut */
+  height: 13% !important;          /* change la hauteur comme tu veux */
+  width: auto !important;           /* garde les proportions */
+  max-width: 90% !important;        /* ne dépasse jamais l’écran */
+  image-rendering: pixelated;       /* effet pixel art */
+  image-rendering: crisp-edges;
+  position: absolute;
+  top: 10px;
+  left: 50%;
   transform: translateX(-50%);
-  z-index: 999;         /* devant tout */
-  pointer-events: none; /* clics passent à travers */
-  width: auto;          /* tu peux fixer une largeur si besoin */
-  height: 80px;         /* ajuste selon ton PNG */
-  /* Effet pixel */
-  image-rendering: pixelated;  /* rend les pixels visibles */
-  image-rendering: crisp-edges; /* pour certains navigateurs */
+  z-index: 999;
+  pointer-events: none;
 }
+
+
 
 
 
@@ -352,9 +447,9 @@ p {
 
 #minecraft-title {
   position: absolute; /* ou relative */
-  top: 50px;          /* distance depuis le haut */
-  left: 1100px;
-  transform: rotate(-25deg); /* rotation de 45° */
+  top: 80px;          /* distance depuis le haut */
+  left: 1190px;
+  transform: rotate(-15deg); /* rotation de 45° */
   z-index: 999;
   pointer-events: none;
   font-family: "PixelFont", sans-serif;
@@ -466,3 +561,186 @@ p {
     font-size: 14px;
   }
 }
+
+
+/* --- PLAYER STYLE --- */
+.content.player {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  gap: 5px;
+}
+
+.player-cover img {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #1a2535;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+.player-info {
+  flex: 1;
+}
+
+.player-info h1 {
+  font-size: 15px;
+  margin: 0;
+  line-height: 0.7;
+}
+
+.player-info p {
+  font-size: 15px;
+  opacity: 0.7;
+  margin: 5px 0 1px 0;
+}
+
+.player-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.player-controls button {
+  border: 2px solid var(--hyl1a-border-color);
+  background: var(--hyl1a-inactive-color);
+  
+  color: var(--hyl1a-window-text-color);
+  font-weight: bold;
+  font-family: "PixelFont", monospace;
+  position: absolute;               
+  left: 55%;
+  top: 30%;           
+  margin: 0;
+}
+
+.player-controls button:hover {
+  background: var(--hyl1a-outer-color);
+}
+
+.player-progress input[type="range"] {
+  width: 100%;
+  accent-color: #fff;
+}
+
+.player-progress .time {
+  font-size: 17px;
+  opacity: 0.8;
+  position: absolute;
+  left: 78%;
+  top: 34%;
+}
+
+
+/* ------------------------ BARRE DES TÂCHES XP ------------------------ */
+#taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: var(--hyl1a-inner-color);
+  border-top: 2px solid var(--hyl1a-border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  box-shadow: 0 -2px 4px rgba(0,0,0,0.3);
+  z-index: 2000;
+  font-family: "PixelFont", monospace;
+}
+
+.taskbar-left,
+.taskbar-center,
+.taskbar-right {
+  display: flex;
+  align-items: center;
+  padding-right: 9px;
+}
+
+#start-button {
+  border: 2px solid var(--hyl1a-border-color);
+  background: var(--hyl1a-inactive-color);
+  color: var(--hyl1a-window-text-color);
+  font-weight: bold;
+  cursor: pointer;
+  padding: 2px 8px;
+  margin-right: 4px;
+}
+
+#start-button:hover {
+  background: var(--hyl1a-outer-color);
+}
+
+.taskbar-center {
+  flex: 1;
+  gap: 4px;
+  justify-content: flex-start;
+  overflow-x: auto;
+}
+
+.taskbar-window {
+  border: 2px solid var(--hyl1a-border-color);
+  background: var(--hyl1a-inactive-color);
+  color: var(--hyl1a-window-text-color);
+  font-weight: bold;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
+.taskbar-window:hover {
+  background: var(--hyl1a-outer-color);
+}
+
+.taskbar-right {
+  font-size: 14px;
+  padding-left: 8px;
+}
+
+/* Menu Start style Windows XP */
+#start-menu {
+  position: absolute;
+  bottom: 40px; /* juste au-dessus de la taskbar */
+  left: 0;
+  width: 200px;
+  background-color: rgba(198, 216, 231, 1); /* opaque */
+  border: 2px solid var(--hyl1a-border-color);
+  display: none; /* caché par défaut */
+  z-index: 3000;
+  font-family: "PixelFont", monospace;
+}
+
+#start-menu ul {
+  list-style: none;
+  padding: 4px;
+  margin: 0;
+}
+
+#start-menu li {
+  padding: 4px 6px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--hyl1a-border-color);
+}
+
+#start-menu li:hover {
+  background-color: var(--hyl1a-outer-color);
+}
+
+#start-menu li ul {
+  display: none; /* sous-menu caché */
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background-color: rgba(198, 216, 231, 1); /* opaque */
+  border: 2px solid var(--hyl1a-border-color);
+  min-width: 150px;
+}
+
+#start-menu li:hover > ul {
+  display: block; /* affiche le sous-menu au survol */
+}
+
+
+
+
+

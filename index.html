@@ -3,9 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fenêtres style Windows - Multi</title>
+  <title>Hyl1a Web</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="Image/favicon.png">
+
 </head>
+
+
+
+
+<!-- termine de faire tone easter egg avec le gif du chat d'Omori, normalement dès quon clic dessus ya un message qui spawn pour dire "stop" mais ya un probleme avec les superposition je crois notamment avec le absolut qui doit etre en relative de .gif-container2 -->
+
+<!-- 01/11/2025 22:07 -->
+
+
+
+
+
+
 
 
 
@@ -28,12 +43,15 @@
   <span id="splash-text">Bienvenue sur mon site !</span>
 </div>
 
+<div class="gif-container2">
+  <img src="https://media.tenor.com/Z1iZAJCTQoUAAAAj/mewo.gif" alt="GIF animation" id="mewo">
+</div>
 
 
   <!-- =================== FENÊTRE 1 =================== -->
   <div class="window" id="window1">
     <div class="title">
-      <span>📍 Presentation</span>
+      <span>📁 Presentation</span>
       <div class="window-buttons">
         <button class="minimize">-</button>
         <button class="maximize">□</button>
@@ -50,8 +68,8 @@
     <div class="content">
       <div class="tab-content active" id="home1">
         
-        <p>Hi, I’m <b>Hyl1a</b>.<br> On this site, I want to share a bunch of my <b>creations</b> and <b>passions</b>. 
-        You’ll find things like my VHS-inspired videos, my drawings, and lots of other projects that I love working on. 
+        <p>Hi, I'm <b>Hyl1a</b>.<br> On this site, I want to share a bunch of my <b>creations</b> and <b>passions</b>. 
+        You'll find things like my VHS-inspired videos, my drawings, and lots of other projects that I love working on. 
         This is a place where I can showcase my creativity and explore new ideas, 
         and I hope you enjoy exploring it as much as I enjoy building it!</p>
         <div class="gif-container">
@@ -74,7 +92,7 @@
   <!-- =================== FENÊTRE 2 =================== -->
   <div class="window" id="window2">
     <div class="title">
-      <span>📓 To Do List</span>
+      <span>📝 To Do List</span>
       <div class="window-buttons">
         <button class="minimize">-</button>
         <button class="maximize">□</button>
@@ -83,18 +101,18 @@
     </div>
 
     <div class="tabs">
-      <button class="tab active" data-tab="home2">À rajouter</button>
-      <button class="tab" data-tab="about2">À régler</button>
+      <button class="tab active" data-tab="home2">Add</button>
+      <button class="tab" data-tab="about2">Delete</button>
     </div>
 
     <div class="content">
       <div class="tab-content active" id="home2">
         <h1>Trucs cool à rajouter</h1>
-        <p>- Musique de fond<br>- Thème animé<br>- Gifs animés<br>- Animation des fenêtres</p>
+        <p>- Musique de fond ✅<br>- Thème animé ✅<br>- Gifs animés ✅<br>- Animation des fenêtres ❌</p>
       </div>
       <div class="tab-content" id="about2">
         <h1>Trucs à régler</h1>
-        <p>- Bug de déplacement des fenêtres<br>- Police d’écriture à changer</p>
+        <p>- Bug de déplacement des fenêtres ✅<br>- Police d'écriture à changer ❌</p>
       </div>
     </div>
   </div>
@@ -119,19 +137,19 @@
     <div class="content">
       <div class="tab-content active" id="home3">
         <h1>Vagabond - Retro // Glitch Edition</h1>
-        <video width="100%" autoplay loop>
+        <video width="100%" autoplay loop muted playsinline webkit-playsinline>
             <source src="Video/VagabondVHS.mp4" type="video/mp4">
     </video>
       </div>
       <div class="tab-content" id="about3">
         <h1>Lain - Retro // Glitch Edition</h1>
-        <video width="100%" autoplay loop>
+        <video width="100%" autoplay loop muted playsinline webkit-playsinline>
             <source src="Video/LainVHS.mp4" type="video/mp4">
     </video>
       </div>
       <div class="tab-content" id="contact3">
         <h1>Greninja - Retro // Glitch Edition</h1>
-        <video width="100%" autoplay loop>
+        <video width="100%" autoplay loop muted playsinline webkit-playsinline>
             <source src="Video/GreninjaVHS.mp4" type="video/mp4">
     </video>
       </div>
@@ -156,7 +174,7 @@
 
     <div class="player-info">
       <h1 id="music-title">No track</h1>
-      <p id="music-artist">–</p>
+      <p id="music-artist">—</p>
 
       <div class="player-controls">
         <button id="music-toggle">▶</button>
@@ -198,7 +216,7 @@
    <!-- =================== FENÊTRE 6 =================== -->
   <div class="window" id="window6">
     <div class="title">
-      <span>📧 Bio</span>
+      <span>🔧 Bio</span>
       <div class="window-buttons">
         <button class="minimize">-</button>
         <button class="maximize">□</button>
@@ -225,7 +243,7 @@
 <!-- =================== FENÊTRE 7 - dessin =================== -->
 <div class="window" id="window7">
   <div class="title">
-    <span>📼 VHS</span>
+    <span>🎨 Drawing</span>
     <div class="window-buttons">
       <button class="minimize">-</button>
       <button class="maximize">□</button>
@@ -235,9 +253,9 @@
 
   <!-- Onglets -->
   <div class="tabs">
-    <button class="tab active" data-tab="home7">Dessin 1</button>
-    <button class="tab" data-tab="about7">Dessin 2</button>
-    <button class="tab" data-tab="contact7">Dessin 3</button>
+    <button class="tab active" data-tab="home7">Draw 1</button>
+    <button class="tab" data-tab="about7">Draw 2</button>
+    <button class="tab" data-tab="contact7">Draw 3</button>
   </div>
 
   <div class="content">
@@ -303,12 +321,12 @@
       </div>
     </div>
     <div class="taskbar-center">
-      <span class="taskbar-window">📍 Presentation</span>
-      <span class="taskbar-window">📓 To Do List</span>
+      <span class="taskbar-window">📁 Presentation</span>
+      <span class="taskbar-window">📝 To Do List</span>
       <span class="taskbar-window">📼 VHS</span>
       <span class="taskbar-window">🎵 Music Player</span>
       <span class="taskbar-window">📧 Email</span>
-      <span class="taskbar-window">📧 Bio</span>
+      <span class="taskbar-window">🔧 Bio</span>
     </div>
     <div class="taskbar-right">
       <span id="taskbar-time"></span>

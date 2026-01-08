@@ -1,17 +1,17 @@
 /* ------------------------ Variables ------------------------ */
 :root {
-    --hyl1a-inactive-color: #7b9ae4;  /* Couleur de fond des fenêtres et onglets inactifs */
-    --hyl1a-outer-color: #787d91; /* Couleur de fond des fenêtres et onglets au survol */
-    --hyl1a-inner-color: #c6d8e798; /* Couleur de fond des fenêtres et onglets actifs */
-    --hyl1a-border-color: #2e3a86; /* Couleur des bordures des fenêtres et onglets */
-    --hyl1a-window-text-color: #000000; /* Couleur du texte dans les fenêtres */
-    --hyl1a-window-text-back: #e2f6fd; /* Couleur de fond du texte dans les fenêtres */
-    --hyl1a-username-color: #a0add4; /* Couleur des noms d'utilisateur */
-    --hyl1a-button-color: #8a0e9b; /* Couleur des boutons */
-    --hyl1a-task-color: #F3E1F7; /* Couleur des tâches */ 
-    --hyl1a-scrollbar-inner-color: #DB8ED6; /* Couleur de la barre de défilement */
-    --hyl1a-scrollbar-inner-hover-color: #B471B0; /* Couleur de la barre de défilement au survol */
-    --hyl1a-scrollbar-outer-color: #C5EAFC; /* Couleur de fond de la barre de défilement */
+    --hyl1a-inactive-color: #7b9ae4;
+    --hyl1a-outer-color: #787d91;
+    --hyl1a-inner-color: #c6d8e798;
+    --hyl1a-border-color: #2e3a86;
+    --hyl1a-window-text-color: #000000;
+    --hyl1a-window-text-back: #e2f6fd;
+    --hyl1a-username-color: #a0add4;
+    --hyl1a-button-color: #8a0e9b;
+    --hyl1a-task-color: #F3E1F7;
+    --hyl1a-scrollbar-inner-color: #DB8ED6;
+    --hyl1a-scrollbar-inner-hover-color: #B471B0;
+    --hyl1a-scrollbar-outer-color: #C5EAFC;
 }
 
 /* ------------------------ Curseur et police ------------------------ */
@@ -23,6 +23,7 @@ body, html, .window, .content, .tabs, .tab, .window-buttons, p, h1 {
 html, body {
   height: 100%;
   margin: 0;
+  overflow-x: hidden;
 }
 
 /* ------------------------ Corps ------------------------ */
@@ -33,7 +34,7 @@ body {
   display: flex;
   justify-content: center;
   padding: 50px;
-  position: relative; 
+  position: relative;
 }
 
 /* ------------------------ Fenêtres ------------------------ */
@@ -59,38 +60,36 @@ body {
   cursor: grab;
 }
 
-/* ------------------------ Position des fenêtres ------------------------ */
+/* ------------------------ Position des fenêtres (Desktop) ------------------------ */
 #window1 {
   width: 50%;
-  height: 39%;
+  height: auto;
   top: 15%;
   left: 465px;
   padding: 5px;
-
 }
 
 #window2 {
   width: 23%;
   padding: 5px;
-  height: 21%;
+  height: auto;
   top: 70%;
-  left: 0%; /* visible à droite */
+  left: 0%;
 }
 
 #window3 {
   width: 23%;
   height: 52%;
-  top: 15.5%;    /* un peu plus bas que #window2 */
-  left: 0%;   /* à droite */
+  top: 15.5%;
+  left: 0%;
   padding: 5px;
-
 }
 
 #window4 {
   width: 23%;
   padding: 5px;
-  height: auto;         /* s’adapte au contenu */
-  max-height: 150px;    /* ne dépasse pas une certaine hauteur */
+  height: auto;
+  max-height: 150px;
   top: 3%;
   left: 0%;
 }
@@ -100,7 +99,7 @@ body {
   width: 23%;
   height: 8%;
   top: 65.5%;
-  left: 76%; /* visible à droite */
+  left: 76%;
 }
 
 #window6 {
@@ -108,7 +107,7 @@ body {
   width: 23%;
   height: 28%;
   top: 35%;
-  left: 76%; /* visible à droite */
+  left: 76%;
 }
 
 #window7 {
@@ -117,18 +116,14 @@ body {
   top: 56.5%;
   left: 465px;
   padding: 5px;
-
 }
-
-/* ------------------------------------------------ */
 
 #window8 {
   width: 15%;
   padding: 5px;
   height: auto;
   top: 2%;
-  left: 84%; /* visible à droite */
-  
+  left: 84%;
 }
 
 #window8 .gif-container img {
@@ -137,66 +132,48 @@ body {
   width: auto !important;
   height: auto !important;
   display: block;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
 #window8 .content {
-  padding: 0;      /* supprime le padding */
+  padding: 0;
 }
 
 #window8 .gif-container {
-  margin: 0;       /* supprime tout margin */
+  margin: 0;
 }
 
 #window8 .gif-container img {
   display: block;
-  margin: 0 auto;  /* centre horizontalement */
+  margin: 0 auto;
   max-width: 100%;
   max-height: 150px;
   width: auto;
   height: auto;
 }
 
-/* ------------------------------------------------ */
-
-
-
 .animated-image {
     display: block;
-    margin: auto;            /* centre horizontalement */
-    max-width: 90%;          /* limite largeur à 90% de la fenêtre */
-    max-height: 90%;         /* limite hauteur à 90% de la fenêtre */
-    width: auto;             /* garde les proportions */
-    height: auto;            /* garde les proportions */
-    image-rendering: pixelated; /* effet pixel art */
+    margin: auto;
+    max-width: 90%;
+    max-height: 90%;
+    width: auto;
+    height: auto;
+    image-rendering: pixelated;
 }
 
-
-/* ------------------------------------------------ */
-
-
-#window1 .content p {
-    margin: 0;     /* SOLUTION ENFINNNNNNNNNNNNNN */
-    padding: 0;    
-}
-
-
-#window6 .content p {
-    margin: 0;     
-    padding: 0;    
+#window1 .content p,
+#window6 .content p,
+#window5 .content p {
+    margin: 0;
+    padding: 0;
 }
 
 #window5 .content {
-    padding: 4px; /* ou 2px ou 0 selon ce que tu veux */
-    height: auto; /* ajuste automatiquement la hauteur au contenu */
-    min-height: 0; /* évite les contraintes inutiles */
+    padding: 4px;
+    height: auto;
+    min-height: 0;
 }
-
-#window5 .content p {
-    margin: 0;     
-    padding: 0;    
-}
-
 
 /* ------------------------ Boutons fenêtre ------------------------ */
 .window-buttons button {
@@ -223,6 +200,7 @@ body {
 .tabs {
   display: flex;
   border-bottom: 2px solid var(--hyl1a-border-color);
+  flex-wrap: wrap;
 }
 
 .tab {
@@ -254,10 +232,13 @@ body {
 
 .tab-content {
   display: none;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
 .tab-content.active {
   display: block;
+  opacity: 1;
 }
 
 h1 {
@@ -283,6 +264,22 @@ p {
   height: auto;
 }
 
+.gif-container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 30%;
+  left: 77%;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.gif-container2 img {
+  width: 100px;
+  height: auto;
+}
+
 /* ------------------------ Fond vidéo ------------------------ */
 #background-video {
   position: fixed;
@@ -305,18 +302,16 @@ p {
 }
 
 /* ------------------------ Musique de fond ------------------------ */
-
 #music-toggle {
   border: 2px solid var(--hyl1a-border-color);
   background: var(--hyl1a-inactive-color);
   color: var(--hyl1a-window-text-color);
   font-weight: bold;
   font-family: "PixelFont", monospace;
-  position: absolute;               
+  position: absolute;
   left: 45%;
-  top: 30%;           
+  top: 30%;
   margin: 0;
-
 }
 
 #music-toggle:hover {
@@ -329,11 +324,11 @@ p {
 
 /* ------------------------ Barre de progression musique ------------------------ */
 #music-progress {
-  width: 90%;          /* largeur de la barre */
-  height: 5px;        /* hauteur plus visible */
-  border-radius: 6px;  /* arrondi pour le style */
-  background-color: #E2E2E2;   /* couleur de fond de la barre */
-  accent-color: #100e9b;       /* couleur de la partie remplie (pour Chrome, Edge, Firefox récent) */
+  width: 90%;
+  height: 5px;
+  border-radius: 6px;
+  background-color: #E2E2E2;
+  accent-color: #100e9b;
   cursor: pointer;
   margin: 10px 0;
 }
@@ -344,14 +339,13 @@ p {
   margin-top: 4px;
   width: 100%;
   display: flex;
-  justify-content: space-between; /* current à gauche, duration à droite */
+  justify-content: space-between;
 }
-
 
 #window4 .content {
   display: flex;
-  flex-direction:row;  /* empile les éléments verticalement */
-  gap: 6px;                /* espace entre titre, barre, bouton */
+  flex-direction: row;
+  gap: 6px;
 }
 
 #track-name {
@@ -388,26 +382,12 @@ p {
   font-size: 14px;
 }
 
-
-
-/* Animation de transition pour les contenus des onglets */
-.tab-content {
-  display: none;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.tab-content.active {
-  display: block;
-  opacity: 1;
-}
-
 #site-title-img {
-  display: block !important;        /* pour éviter les inline par défaut */
-  height: 13% !important;          /* change la hauteur comme tu veux */
-  width: auto !important;           /* garde les proportions */
-  max-width: 90% !important;        /* ne dépasse jamais l’écran */
-  image-rendering: pixelated;       /* effet pixel art */
+  display: block !important;
+  height: 13% !important;
+  width: auto !important;
+  max-width: 90% !important;
+  image-rendering: pixelated;
   image-rendering: crisp-edges;
   position: absolute;
   top: 10px;
@@ -417,17 +397,13 @@ p {
   pointer-events: none;
 }
 
-
-
-
-
 #site-title-container {
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 999;
   pointer-events: none;
-  animation: oscillate 2s infinite alternate ease-in-out; /* ton animation */
+  animation: oscillate 2s infinite alternate ease-in-out;
 }
 
 #site-title-img {
@@ -436,20 +412,11 @@ p {
   image-rendering: pixelated;
 }
 
-/* Exemple d'animation oscillante 
-@keyframes oscillate {
-  0% { transform: translateX(-50%) rotate(-3deg); }
-  60% { transform: translateX(-50%) rotate(3deg); }
-  100% { transform: translateX(-50%) rotate(-3deg); }
-}
-
-*/
-
 #minecraft-title {
-  position: absolute; /* ou relative */
-  top: 80px;          /* distance depuis le haut */
+  position: absolute;
+  top: 80px;
   left: 1190px;
-  transform: rotate(-15deg); /* rotation de 45° */
+  transform: rotate(-15deg);
   z-index: 999;
   pointer-events: none;
   font-family: "PixelFont", sans-serif;
@@ -459,12 +426,11 @@ p {
   color: yellow;
   font-size: 20px;
   font-weight: bold;
-  text-shadow: 2px 2px 0 #000; /* effet rétro / Minecraft */
+  text-shadow: 2px 2px 0 #000;
   display: inline-block;
   animation: oscillate 4s infinite ease-in-out;
 }
 
-/* Oscillation style Minecraft */
 @keyframes oscillate {
   0%   { transform: rotate(-12deg) scale(1); }
   25%  { transform: rotate(10deg) scale(1.05); }
@@ -472,96 +438,6 @@ p {
   75%  { transform: rotate(10deg) scale(1.05); }
   100% { transform: rotate(-12deg) scale(1); }
 }
-
-
-/* ================= RESPONSIVE DESIGN ================= */
-@media (max-width: 1024px) {
-  body {
-    flex-direction: column;
-    padding: 10px;
-  }
-
-  .window {
-    position: relative;
-    width: 90vw;
-    height: auto;
-    left: 0;
-    top: 0;
-    margin: 10px auto;
-    box-shadow: 2px 2px rgba(80, 20, 255, 0.3);
-  }
-
-  .content {
-    padding: 6px;
-  }
-
-  h1 {
-    font-size: 16px;
-  }
-
-  p {
-    font-size: 14px;
-  }
-
-  #site-title-img {
-    height: 50px;
-  }
-
-  #minecraft-title {
-    top: 80px;
-    left: 50%;
-    transform: translateX(-50%) rotate(-15deg);
-    text-align: center;
-  }
-
-  .gif-container img,
-  video {
-    max-width: 100%;
-    height: auto;
-  }
-}
-
-/* Petit écran (smartphones) */
-@media (max-width: 600px) {
-  body {
-    padding: 5px;
-  }
-
-  .window {
-    width: 95vw;
-    margin: 8px auto;
-  }
-
-  .title {
-    font-size: 12px;
-    height: 20px;
-  }
-
-  .tab {
-    font-size: 12px;
-    padding: 2px 6px;
-  }
-
-  #music-toggle {
-    width: 100%;
-    font-size: 12px;
-    padding: 4px;
-  }
-
-  #music-progress {
-    width: 100%;
-  }
-
-  #minecraft-title {
-    top: 60px;
-    font-size: 14px;
-  }
-
-  #splash-text {
-    font-size: 14px;
-  }
-}
-
 
 /* --- PLAYER STYLE --- */
 .content.player {
@@ -604,13 +480,12 @@ p {
 .player-controls button {
   border: 2px solid var(--hyl1a-border-color);
   background: var(--hyl1a-inactive-color);
-  
   color: var(--hyl1a-window-text-color);
   font-weight: bold;
   font-family: "PixelFont", monospace;
-  position: absolute;               
+  position: absolute;
   left: 55%;
-  top: 30%;           
+  top: 30%;
   margin: 0;
 }
 
@@ -631,7 +506,6 @@ p {
   top: 34%;
 }
 
-
 /* ------------------------ BARRE DES TÂCHES XP ------------------------ */
 #taskbar {
   position: fixed;
@@ -639,7 +513,7 @@ p {
   left: 0;
   width: 100%;
   height: 40px;
-  background-color: var(--hyl1a-inner-color);
+  background-color: #7b9ae4d5;
   border-top: 2px solid var(--hyl1a-border-color);
   display: flex;
   align-items: center;
@@ -686,6 +560,7 @@ p {
   font-weight: bold;
   cursor: pointer;
   padding: 2px 6px;
+  white-space: nowrap;
 }
 
 .taskbar-window:hover {
@@ -697,15 +572,14 @@ p {
   padding-left: 8px;
 }
 
-/* Menu Start style Windows XP */
 #start-menu {
   position: absolute;
-  bottom: 40px; /* juste au-dessus de la taskbar */
+  bottom: 40px;
   left: 0;
   width: 200px;
-  background-color: rgba(198, 216, 231, 1); /* opaque */
+  background-color: rgba(198, 216, 231, 1);
   border: 2px solid var(--hyl1a-border-color);
-  display: none; /* caché par défaut */
+  display: none;
   z-index: 3000;
   font-family: "PixelFont", monospace;
 }
@@ -727,20 +601,398 @@ p {
 }
 
 #start-menu li ul {
-  display: none; /* sous-menu caché */
+  display: none;
   position: absolute;
   left: 100%;
   top: 0;
-  background-color: rgba(198, 216, 231, 1); /* opaque */
+  background-color: rgba(198, 216, 231, 1);
   border: 2px solid var(--hyl1a-border-color);
   min-width: 150px;
 }
 
 #start-menu li:hover > ul {
-  display: block; /* affiche le sous-menu au survol */
+  display: block;
 }
 
+/* ------------------------ Meow easter egg ------------------------ */
+#mewo {
+  user-select: none;
+  -webkit-user-drag: none;
+  cursor: pointer;
+}
 
+#stop-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2000;
+}
 
+#stop-message.show {
+  opacity: 1;
+}
 
+/* ================= RESPONSIVE DESIGN ================= */
 
+/* Tablettes (768px - 1024px) */
+@media (max-width: 1024px) {
+  body {
+    padding: 10px;
+    padding-bottom: 60px;
+  }
+
+  /* Toutes les fenêtres deviennent relatives et empilées */
+  .window {
+    position: relative !important;
+    width: 90% !important;
+    max-width: 600px;
+    height: auto !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 15px auto !important;
+    box-shadow: 3px 3px rgba(36, 20, 255, 0.5);
+  }
+
+  .content {
+    padding: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  h1 {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  #site-title-img {
+    height: 60px !important;
+    top: 5px;
+  }
+
+  #minecraft-title {
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-15deg);
+  }
+
+  #splash-text {
+    font-size: 16px;
+  }
+
+  .gif-container2 {
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .gif-container2 img {
+    width: 80px;
+  }
+
+  /* Player ajustements */
+  .player-controls button {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+  }
+
+  .player-progress .time {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    font-size: 14px;
+  }
+
+  #music-toggle {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+  }
+}
+
+/* Smartphones (320px - 767px) */
+@media (max-width: 767px) {
+  body {
+    padding: 5px;
+    padding-bottom: 70px;
+  }
+
+  .window {
+    width: 95% !important;
+    margin: 10px auto !important;
+    padding: 3px !important;
+  }
+
+  .title {
+    font-size: 12px;
+    height: 26px;
+    padding: 0 6px;
+  }
+
+  .title span {
+    font-size: 11px;
+  }
+
+  .window-buttons button {
+    width: 28px;
+    height: 22px;
+    font-size: 14px;
+  }
+
+  .tabs {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tab {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+
+  .content {
+    padding: 8px;
+    font-size: 14px;
+    max-height: 350px;
+    overflow-y: auto;
+  }
+
+  h1 {
+    font-size: 14px;
+  }
+
+  p {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  video {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .gif-container img {
+    max-width: 80%;
+  }
+
+  #site-title-img {
+    height: 50px !important;
+    top: 5px;
+  }
+
+  #minecraft-title {
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-15deg);
+  }
+
+  #splash-text {
+    font-size: 14px;
+  }
+
+  .gif-container2 {
+    display: none; /* Cache le gif Mewo sur mobile */
+  }
+
+  /* Music Player mobile */
+  .content.player {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px;
+  }
+
+  .player-cover img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .player-info {
+    width: 100%;
+  }
+
+  .player-info h1 {
+    font-size: 13px;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .player-info p {
+    font-size: 12px;
+  }
+
+  .player-controls {
+    position: relative !important;
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+    margin: 8px 0;
+  }
+
+  .player-controls button {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    padding: 6px 14px;
+    font-size: 14px;
+  }
+
+  .player-progress {
+    width: 100%;
+  }
+
+  .player-progress input[type="range"] {
+    width: 100%;
+  }
+
+  .player-progress .time {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    font-size: 12px;
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  /* Taskbar mobile */
+  #taskbar {
+    height: 50px;
+    padding: 0 6px;
+  }
+
+  #start-button {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+
+  .taskbar-center {
+    gap: 3px;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .taskbar-window {
+    font-size: 10px;
+    padding: 4px 8px;
+    flex-shrink: 0;
+  }
+
+  .taskbar-right {
+    font-size: 11px;
+    padding-left: 6px;
+  }
+
+  #start-menu {
+    width: 180px;
+    font-size: 12px;
+  }
+
+  /* Désactive le drag sur mobile */
+  .title {
+    cursor: default;
+  }
+
+  .window {
+    touch-action: pan-y;
+  }
+}
+
+/* Très petits écrans (< 400px) */
+@media (max-width: 400px) {
+  body {
+    padding: 3px;
+    padding-bottom: 70px;
+  }
+
+  .window {
+    width: 98% !important;
+    margin: 8px auto !important;
+  }
+
+  .title {
+    font-size: 11px;
+    height: 24px;
+  }
+
+  .tab {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  .content {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  h1 {
+    font-size: 13px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  #site-title-img {
+    height: 40px !important;
+  }
+
+  #splash-text {
+    font-size: 12px;
+  }
+
+  .player-cover img {
+    width: 50px;
+    height: 50px;
+  }
+
+  #taskbar {
+    height: 45px;
+  }
+}
+
+/* Scrollbar personnalisée pour mobile */
+@media (max-width: 767px) {
+  .content::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .content::-webkit-scrollbar-track {
+    background: var(--hyl1a-scrollbar-outer-color);
+  }
+
+  .content::-webkit-scrollbar-thumb {
+    background: var(--hyl1a-scrollbar-inner-color);
+    border-radius: 4px;
+  }
+
+  .content::-webkit-scrollbar-thumb:hover {
+    background: var(--hyl1a-scrollbar-inner-hover-color);
+  }
+
+  .tabs::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .tabs::-webkit-scrollbar-track {
+    background: var(--hyl1a-inactive-color);
+  }
+
+  .tabs::-webkit-scrollbar-thumb {
+    background: var(--hyl1a-border-color);
+    border-radius: 3px;
+  }
+}

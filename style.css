@@ -643,24 +643,35 @@ p {
 
 /* ================= RESPONSIVE DESIGN ================= */
 
-/* Tablettes (768px - 1024px) */
+/* Tablettes et mobile (max 1024px) */
 @media (max-width: 1024px) {
   body {
-    padding: 10px;
-    padding-bottom: 60px;
+    padding: 80px 10px 60px 10px;
+    display: block;
   }
 
-  /* Toutes les fenêtres deviennent relatives et empilées */
+  /* IMPORTANT: Réinitialiser toutes les positions */
   .window {
-    position: relative !important;
-    width: 90% !important;
-    max-width: 600px;
+    position: static !important;
+    width: 95% !important;
+    max-width: 600px !important;
     height: auto !important;
-    left: auto !important;
-    top: auto !important;
+    left: 0 !important;
+    top: 0 !important;
     margin: 15px auto !important;
-    box-shadow: 3px 3px rgba(36, 20, 255, 0.5);
+    box-shadow: 3px 3px rgba(36, 20, 255, 0.5) !important;
+    display: block !important;
   }
+
+  /* Réorganiser l'ordre des fenêtres */
+  #window4 { order: 1; }
+  #window1 { order: 2; }
+  #window6 { order: 3; }
+  #window7 { order: 4; }
+  #window3 { order: 5; }
+  #window5 { order: 6; }
+  #window2 { order: 7; }
+  #window8 { order: 8; }
 
   .content {
     padding: 8px;
@@ -678,13 +689,13 @@ p {
 
   #site-title-img {
     height: 60px !important;
-    top: 5px;
+    top: 10px !important;
   }
 
   #minecraft-title {
-    top: 70px;
-    left: 50%;
-    transform: translateX(-50%) rotate(-15deg);
+    top: 75px !important;
+    left: 50% !important;
+    transform: translateX(-50%) rotate(-15deg) !important;
   }
 
   #splash-text {
@@ -692,13 +703,13 @@ p {
   }
 
   .gif-container2 {
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 15% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
   }
 
   .gif-container2 img {
-    width: 80px;
+    width: 70px;
   }
 
   /* Player ajustements */
@@ -722,15 +733,14 @@ p {
   }
 }
 
-/* Smartphones (320px - 767px) */
+/* Smartphones (max 767px) */
 @media (max-width: 767px) {
   body {
-    padding: 5px;
-    padding-bottom: 70px;
+    padding: 65px 5px 60px 5px;
   }
 
   .window {
-    width: 95% !important;
+    width: 98% !important;
     margin: 10px auto !important;
     padding: 3px !important;
   }
@@ -789,22 +799,22 @@ p {
   }
 
   #site-title-img {
-    height: 50px !important;
-    top: 5px;
+    height: 45px !important;
+    top: 8px !important;
   }
 
   #minecraft-title {
-    top: 60px;
-    left: 50%;
-    transform: translateX(-50%) rotate(-15deg);
+    top: 58px !important;
+    left: 50% !important;
+    transform: translateX(-50%) rotate(-15deg) !important;
   }
 
   #splash-text {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .gif-container2 {
-    display: none; /* Cache le gif Mewo sur mobile */
+    display: none;
   }
 
   /* Music Player mobile */
@@ -901,7 +911,6 @@ p {
     font-size: 12px;
   }
 
-  /* Désactive le drag sur mobile */
   .title {
     cursor: default;
   }
@@ -914,12 +923,10 @@ p {
 /* Très petits écrans (< 400px) */
 @media (max-width: 400px) {
   body {
-    padding: 3px;
-    padding-bottom: 70px;
+    padding: 60px 3px 55px 3px;
   }
 
   .window {
-    width: 98% !important;
     margin: 8px auto !important;
   }
 
@@ -947,11 +954,11 @@ p {
   }
 
   #site-title-img {
-    height: 40px !important;
+    height: 38px !important;
   }
 
   #splash-text {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .player-cover img {
@@ -964,35 +971,33 @@ p {
   }
 }
 
-/* Scrollbar personnalisée pour mobile */
-@media (max-width: 767px) {
-  .content::-webkit-scrollbar {
-    width: 8px;
-  }
+/* Scrollbar personnalisée */
+.content::-webkit-scrollbar {
+  width: 8px;
+}
 
-  .content::-webkit-scrollbar-track {
-    background: var(--hyl1a-scrollbar-outer-color);
-  }
+.content::-webkit-scrollbar-track {
+  background: var(--hyl1a-scrollbar-outer-color);
+}
 
-  .content::-webkit-scrollbar-thumb {
-    background: var(--hyl1a-scrollbar-inner-color);
-    border-radius: 4px;
-  }
+.content::-webkit-scrollbar-thumb {
+  background: var(--hyl1a-scrollbar-inner-color);
+  border-radius: 4px;
+}
 
-  .content::-webkit-scrollbar-thumb:hover {
-    background: var(--hyl1a-scrollbar-inner-hover-color);
-  }
+.content::-webkit-scrollbar-thumb:hover {
+  background: var(--hyl1a-scrollbar-inner-hover-color);
+}
 
-  .tabs::-webkit-scrollbar {
-    height: 6px;
-  }
+.tabs::-webkit-scrollbar {
+  height: 6px;
+}
 
-  .tabs::-webkit-scrollbar-track {
-    background: var(--hyl1a-inactive-color);
-  }
+.tabs::-webkit-scrollbar-track {
+  background: var(--hyl1a-inactive-color);
+}
 
-  .tabs::-webkit-scrollbar-thumb {
-    background: var(--hyl1a-border-color);
-    border-radius: 3px;
-  }
+.tabs::-webkit-scrollbar-thumb {
+  background: var(--hyl1a-border-color);
+  border-radius: 3px;
 }

@@ -2,13 +2,13 @@
 document.querySelectorAll('.window').forEach(win => {
   const tabs = win.querySelectorAll('.tab');
   const contents = win.querySelectorAll('.tab-content');
-
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       tabs.forEach(t => t.classList.remove('active'));
       contents.forEach(c => c.classList.remove('active'));
       tab.classList.add('active');
-      win.querySelector(`#${tab.dataset.tab}`).classList.add('active');
+      const target = win.querySelector(`#${tab.dataset.tab}`);
+      if (target) target.classList.add('active');
     });
   });
 });
@@ -39,7 +39,6 @@ document.querySelectorAll('.window').forEach(win => {
         win.dataset.oldHeight = win.style.height;
         win.dataset.oldLeft = win.style.left;
         win.dataset.oldTop = win.style.top;
-
         win.style.left = '0';
         win.style.top = '0';
         win.style.width = '100%';
@@ -50,9 +49,7 @@ document.querySelectorAll('.window').forEach(win => {
   }
 
   if (btnClose) {
-    btnClose.addEventListener('click', () => {
-      win.style.display = 'none';
-    });
+    btnClose.addEventListener('click', () => { win.style.display = 'none'; });
   }
 });
 
@@ -86,34 +83,12 @@ document.addEventListener('mousemove', e => {
   const win = activeDrag.win;
   const x = e.clientX - activeDrag.offsetX;
   const y = e.clientY - activeDrag.offsetY;
-
   const vw = window.innerWidth;
   const vh = window.innerHeight;
   const rect = win.getBoundingClientRect();
-  const w = rect.width, h = rect.height;
-
-  win.style.left = Math.min(Math.max(x, -w + 40), vw - 40) + 'px';
-  win.style.top = Math.min(Math.max(y, -h + 40), vh - 40) + 'px';
+  win.style.left = Math.min(Math.max(x, -rect.width + 40), vw - 40) + 'px';
+  win.style.top = Math.min(Math.max(y, -rect.height + 40), vh - 40) + 'px';
 });
-
-document.addEventListener('touchmove', e => {
-  if (!activeDrag.win) return;
-  const t = e.touches[0];
-  if (!t) return;
-  e.preventDefault();
-
-  const win = activeDrag.win;
-  const x = t.clientX - activeDrag.offsetX;
-  const y = t.clientY - activeDrag.offsetY;
-
-  const vw = window.innerWidth;
-  const vh = window.innerHeight;
-  const rect = win.getBoundingClientRect();
-  const w = rect.width, h = rect.height;
-
-  win.style.left = Math.min(Math.max(x, -w + 40), vw - 40) + 'px';
-  win.style.top = Math.min(Math.max(y, -h + 40), vh - 40) + 'px';
-}, { passive: false });
 
 const stopDrag = () => {
   if (!activeDrag.win) return;
@@ -126,42 +101,17 @@ document.addEventListener('touchend', stopDrag);
 
 // ---------------- Musique ----------------
 
-// Playlist locale + covers
 const playlist = [
-  {
-    src: "Audio/Customize.mp3",
-    title: "Customize",
-    artist: "Rafflesia Online",
-    cover: "Audio/covers/customize.jpg"
-  },
-  {
-    src: "Audio/Eshop.mp3",
-    title: "Eshop Theme",
-    artist: "Kazumi Totaka",
-    cover: "Audio/covers/Eshop.jpg"
-  },
-  {
-    src: "Audio/Hip Shop.mp3",
-    title: "Hip Shop",
-    artist: "Toby Fox",
-    cover: "Audio/covers/hipshop.jpg"
-  },
-  {
-    src: "Audio/Takeshi Abo.mp3",
-    title: "Takeshi Abo",
-    artist: "Steins;Gate",
-    cover: "Audio/covers/takeshi.jpg"
-  },
-  {
-    src: "Audio/yume 2kki.mp3",
-    title: "Yume 2kki Theme",
-    artist: "Fan OST",
-    cover: "Audio/covers/yume.jpg"
-  }
+  { src: "Audio/Customize.mp3", title: "Customize", artist: "Rafflesia Online", cover: "Audio/covers/customize.jpg" },
+  { src: "Audio/Eshop.mp3", title: "Eshop Theme", artist: "Kazumi Totaka", cover: "Audio/covers/Eshop.jpg" },
+  { src: "Audio/Hip Shop.mp3", title: "Hip Shop", artist: "Toby Fox", cover: "Audio/covers/hipshop.jpg" },
+  { src: "Audio/Takeshi Abo.mp3", title: "Takeshi Abo", artist: "Steins;Gate", cover: "Audio/covers/takeshi.jpg" },
+  { src: "Audio/yume 2kki.mp3", title: "Yume 2kki Theme", artist: "Fan OST", cover: "Audio/covers/yume.jpg" }
 ];
 
 let currentTrackIndex = Math.floor(Math.random() * playlist.length);
-const music = new Audio(playlist[currentTrackIndex].src);
+// On crée l'objet sans charger de source immédiatement pour éviter les erreurs
+const music = new Audio();
 music.volume = 0.4;
 
 const titleEl = document.getElementById("music-title");
@@ -173,157 +123,234 @@ const progressEl = document.getElementById("music-progress");
 const currentEl = document.getElementById("music-current");
 const durationEl = document.getElementById("music-duration");
 
-// Chargement de la musique
+// Fonction de chargement sécurisée
 function loadTrack(i) {
   const track = playlist[i];
+  if (!track) return;
+  
   music.src = track.src;
-  titleEl.textContent = track.title;
-  artistEl.textContent = track.artist;
-  coverEl.src = track.cover;
+  if(titleEl) titleEl.textContent = track.title;
+  if(artistEl) artistEl.textContent = track.artist;
+  if(coverEl) coverEl.src = track.cover;
+  
   music.load();
-  music.play();
-  toggleBtn.textContent = "⏸";
+  // On ne fait play() que si c'est déclenché par un clic, 
+  // sinon on attend que l'utilisateur appuie sur Play
 }
 
 // Play/Pause
-toggleBtn.addEventListener("click", () => {
-  if (music.paused) {
-    music.play();
-    toggleBtn.textContent = "⏸";
-  } else {
-    music.pause();
-    toggleBtn.textContent = "▶";
-  }
-});
+if (toggleBtn) {
+  toggleBtn.addEventListener("click", () => {
+    // Si aucune musique n'est chargée, on charge la première
+    if (!music.src) loadTrack(currentTrackIndex);
+    
+    if (music.paused) {
+      music.play().catch(err => console.log("Erreur play:", err));
+      toggleBtn.textContent = "⏸";
+    } else {
+      music.pause();
+      toggleBtn.textContent = "▶";
+    }
+  });
+}
 
-// Skip aléatoire
-skipBtn.addEventListener("click", () => {
-  let next;
-  do {
-    next = Math.floor(Math.random() * playlist.length);
-  } while (next === currentTrackIndex);
-  currentTrackIndex = next;
-  loadTrack(currentTrackIndex);
-});
+// Skip
+if (skipBtn) {
+  skipBtn.addEventListener("click", () => {
+    let next;
+    do {
+      next = Math.floor(Math.random() * playlist.length);
+    } while (next === currentTrackIndex);
+    currentTrackIndex = next;
+    loadTrack(currentTrackIndex);
+    music.play().catch(e => {});
+  });
+}
 
-// Progression
+// Mise à jour de la barre de progression
 music.addEventListener("timeupdate", () => {
-  if (!isNaN(music.duration)) {
+  if (!isNaN(music.duration) && progressEl) {
     progressEl.value = (music.currentTime / music.duration) * 100;
     const m = Math.floor(music.currentTime / 60);
     const s = Math.floor(music.currentTime % 60).toString().padStart(2, "0");
-    currentEl.textContent = `${m}:${s}`;
+    if(currentEl) currentEl.textContent = `${m}:${s}`;
   }
 });
 
+// Affichage de la durée totale
 music.addEventListener("loadedmetadata", () => {
-  const m = Math.floor(music.duration / 60);
-  const s = Math.floor(music.duration % 60).toString().padStart(2, "0");
-  durationEl.textContent = `${m}:${s}`;
+  if(durationEl) {
+    const m = Math.floor(music.duration / 60);
+    const s = Math.floor(music.duration % 60).toString().padStart(2, "0");
+    durationEl.textContent = `${m}:${s}`;
+  }
 });
 
-progressEl.addEventListener("input", () => {
-  music.currentTime = (progressEl.value / 100) * music.duration;
-});
+// Interaction avec la barre de progression
+if (progressEl) {
+  progressEl.addEventListener("input", () => {
+    if (music.duration) {
+      music.currentTime = (progressEl.value / 100) * music.duration;
+    }
+  });
+}
 
+// Passage à la suivante automatique
 music.addEventListener("ended", () => {
-  skipBtn.click();
+  if (skipBtn) skipBtn.click();
 });
 
-// Démarrage
-loadTrack(currentTrackIndex);
+// AU DÉMARRAGE : On prépare juste l'affichage (sans lancer le son)
+const initialTrack = playlist[currentTrackIndex];
+if(titleEl) titleEl.textContent = initialTrack.title;
+if(artistEl) artistEl.textContent = initialTrack.artist;
+if(coverEl) coverEl.src = initialTrack.cover;
 
+// On lance la musique uniquement au premier clic sur la page pour respecter les navigateurs
 document.addEventListener("click", () => {
-  if (music.paused) {
+  if (!music.src) {
+    loadTrack(currentTrackIndex);
     music.play().then(() => {
-      toggleBtn.textContent = "⏸";
-    }).catch(err => console.log("Lecture bloquée :", err));
+        if(toggleBtn) toggleBtn.textContent = "⏸";
+    }).catch(err => console.log("Lecture bloquée au démarrage"));
   }
 }, { once: true });
 
-
-
-
-// ---------------- Auto-alternance Onglets ----------------
-const autoTabs = document.querySelectorAll('#window3 .tab');
-const autoContents = document.querySelectorAll('#window3 .tab-content');
-let currentIndex = 0;
-const switchInterval = 5000;
-
-setInterval(() => {
-  autoTabs[currentIndex].classList.remove('active');
-  autoContents[currentIndex].style.opacity = 0;
-
-  currentIndex = (currentIndex + 1) % autoTabs.length;
-  const nextTab = autoTabs[currentIndex];
-  const nextContent = autoContents[currentIndex];
-
-  nextTab.classList.add('active');
-  setTimeout(() => {
-    autoContents.forEach(tc => tc.classList.remove('active'));
-    nextContent.classList.add('active');
-    nextContent.style.opacity = 1;
-    nextContent.querySelector('video')?.play();
-  }, 200);
-}, switchInterval);
-
-
-const splashes = [
-  "Bienvenue sur mon site !",
-  "Also try terraria !",
-  "Notch is here ",
-  " | VHS Style | ",
-  "Easter Egg !"
-];
-
+// ---------------- Splash & Horloge ----------------
+const splashes = ["Bienvenue sur mon site !", "Also try terraria !", "Notch is here ", " | VHS Style | ", "Easter Egg !"];
 const splashText = document.getElementById("splash-text");
-
-setInterval(() => {
-  const randomIndex = Math.floor(Math.random() * splashes.length);
-  splashText.textContent = splashes[randomIndex];
-}, 5000); // change toutes les 5s
-
-
-function updateTaskbarTime() {
-  const timeEl = document.getElementById("taskbar-time");
-  const now = new Date();
-  const h = now.getHours().toString().padStart(2,'0');
-  const m = now.getMinutes().toString().padStart(2,'0');
-  timeEl.textContent = `${h}:${m}`;
+if(splashText) {
+  setInterval(() => { splashText.textContent = splashes[Math.floor(Math.random() * splashes.length)]; }, 5000);
 }
-setInterval(updateTaskbarTime, 1000);
-updateTaskbarTime();
 
-
-const startBtn = document.getElementById("start-button");
-const startMenu = document.getElementById("start-menu");
-const clock = document.getElementById("clock");
-
-// Ouvrir / fermer le menu
-startBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  startMenu.style.display = startMenu.style.display === "block" ? "none" : "block";
-});
-
-// Fermer si clic en dehors
-document.addEventListener("click", () => {
-  startMenu.style.display = "none";
-});
-
-// Horloge fonctionnelle
 function updateClock() {
+  const clock = document.getElementById("clock");
+  const taskbarTime = document.getElementById("taskbar-time");
   const now = new Date();
-  let hours = now.getHours();
-  const minutes = now.getMinutes().toString().padStart(2, "0");
-  const ampm = hours >= 12 ? "PM" : "AM";
-  hours = hours % 12;
-  hours = hours ? hours : 12; // 0 => 12
-  clock.textContent = `${hours}:${minutes} ${ampm}`;
+  const timeStr = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+  if(taskbarTime) taskbarTime.textContent = timeStr;
+  if(clock) {
+    let h = now.getHours();
+    const m = now.getMinutes().toString().padStart(2, '0');
+    const ampm = h >= 12 ? "PM" : "AM";
+    h = h % 12 || 12;
+    clock.textContent = `${h}:${m} ${ampm}`;
+  }
 }
 setInterval(updateClock, 1000);
 updateClock();
 
+// ---------------- Mewo ----------------
+const mewo = document.getElementById('mewo');
+let mewoClicks = 0;
+if(mewo) {
+  const msg = document.createElement('div');
+  msg.id = 'stop-message';
+  msg.textContent = 'Stop 😾';
+  document.body.appendChild(msg);
+  mewo.addEventListener('click', () => {
+    mewoClicks++;
+    if(mewoClicks === 5) {
+      msg.classList.add('show');
+      setTimeout(() => { msg.classList.remove('show'); }, 3000);
+      mewoClicks = 0;
+    }
+  });
+}
 
+// ═══════════════════════════════════════════════════════════════════
+//  FIREBASE 
+// ═══════════════════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  const firebaseConfig = {
+    apiKey: "AIzaSyA0Wk9axU7QwTKoIbxHX8YyiIJV0NDxA0Y",
+    authDomain: "hyl1a-web.firebaseapp.com",
+    projectId: "hyl1a-web",
+    storageBucket: "hyl1a-web.firebasestorage.app",
+    messagingSenderId: "1056027646874",
+    appId: "1:1056027646874:web:1860a91881f74b0c1cb823",
+    measurementId: "G-3PDM4DWKGH"
+  };
 
+  if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
 
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
 
+  // --- CHAT ---
+  const chatMessages = document.getElementById('chat-messages');
+  const chatPseudo = document.getElementById('chat-pseudo');
+  const chatMessage = document.getElementById('chat-message');
+  const chatSend = document.getElementById('chat-send');
+
+  if (chatMessages) {
+    db.collection('chat').orderBy('timestamp', 'asc').limitToLast(50).onSnapshot(snap => {
+      chatMessages.innerHTML = '';
+      snap.forEach(doc => {
+        const d = doc.data();
+        const t = d.timestamp ? d.timestamp.toDate().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : "...";
+        chatMessages.innerHTML += `<div class="chat-message"><strong>${escapeHtml(d.pseudo || "Anonyme")}</strong> <small>${t}</small><p>${escapeHtml(d.message)}</p></div>`;
+      });
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    });
+  }
+
+  window.sendChatMessage = function() {
+    const msg = chatMessage.value.trim();
+    if (!msg) return;
+    db.collection('chat').add({
+      pseudo: chatPseudo.value.trim() || "Anonyme",
+      message: msg,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(() => { chatMessage.value = ''; });
+  }
+
+  if (chatSend) chatSend.onclick = sendChatMessage;
+  if (chatMessage) chatMessage.onkeypress = (e) => { if(e.key === 'Enter') sendChatMessage(); };
+
+  // --- HALL OF FAME ---
+  const hofList = document.getElementById('halloffame-list');
+  const hofPseudo = document.getElementById('hof-pseudo');
+  const hofMessage = document.getElementById('hof-message');
+  const hofSubmit = document.getElementById('hof-submit');
+
+  db.collection('halloffame').orderBy('timestamp', 'desc').onSnapshot(snap => {
+    if (hofList) hofList.innerHTML = '';
+    const items = [];
+    snap.forEach(doc => {
+      const d = doc.data();
+      if (hofList) {
+        hofList.innerHTML += `<div class="hof-signature"><strong> ${escapeHtml(d.pseudo)}</strong><p>${escapeHtml(d.message)}</p></div>`;
+      }
+      items.push(`<strong>${escapeHtml(d.pseudo)}:</strong> ${escapeHtml(d.message)} `);
+    });
+
+    // Ticker
+    const oldTicker = document.querySelector('.hof-ticker');
+    if (oldTicker) oldTicker.remove();
+    if (items.length > 0) {
+      const ticker = document.createElement('div');
+      ticker.className = 'hof-ticker';
+      ticker.innerHTML = `<div class="ticker-content">${items.map(i => `<span class="ticker-item">${i}</span>`).join('')}</div>`;
+      document.body.appendChild(ticker);
+    }
+  });
+
+  window.submitHof = function() {
+    const p = hofPseudo.value.trim();
+    const m = hofMessage.value.trim();
+    if (!p || !m) return alert("Champs vides !");
+    db.collection('halloffame').add({
+      pseudo: p, message: m, timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(() => {
+      hofPseudo.value = ''; hofMessage.value = '';
+      alert("Signé !");
+    });
+  }
+
+  if (hofSubmit) hofSubmit.onclick = submitHof;
+});

@@ -68,7 +68,7 @@ body {
   width: 50%;
   height: auto;
   top: 15%;
-  left: 465px;
+  left: 24%;
   padding: 5px;
 }
 
@@ -82,8 +82,8 @@ body {
 
 #window3 {
   width: 23%;
-  height: 52%;
-  top: 15.5%;
+  height: auto;
+  top: 70%;
   left: 0%;
   padding: 5px;
 }
@@ -99,34 +99,34 @@ body {
 
 #window5 {
   padding: 5px;
-  width: 23%;
-  height: 8%;
+  width: 20%;
+  height: auto;
   top: 65.5%;
-  left: 76%;
+  left: 75%;
 }
 
 #window6 {
   padding: 5px;
-  width: 23%;
-  height: 28%;
+  width: 20%;
+  height: auto;
   top: 35%;
-  left: 76%;
+  left: 75%;
 }
 
 #window7 {
   width: 50%;
   height: auto;
   top: 56.5%;
-  left: 465px;
+  left: 24%;
   padding: 5px;
 }
 
 #window8 {
-  width: 15%;
+  width: 20%;
   padding: 5px;
   height: auto;
-  top: 2%;
-  left: 84%;
+  top: 76%;
+  left: 75%;
 }
 
 #window8 .gif-container img {
@@ -279,7 +279,7 @@ p {
   align-items: center;
   position: absolute;
   top: 30%;
-  left: 77%;
+  left: 75%;
   z-index: 1000;
   pointer-events: none;
 }
@@ -1013,4 +1013,372 @@ p {
 .tabs::-webkit-scrollbar-thumb {
   background: var(--hyl1a-border-color);
   border-radius: 3px;
+}
+
+
+
+
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   🆕 STYLES POUR CHAT & HALL OF FAME - À AJOUTER À LA FIN
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* =================== FENÊTRE 9 - Position Desktop =================== */
+#window9 {
+  width: 23%;
+  height: 52%;
+  top: 15.5%;
+  left: 0%;
+  padding: 5px;
+}
+/* =================== FENÊTRE 10 - Position Desktop =================== */
+#window10 {
+  width: 15%;
+  padding: 5px;
+  height: auto;
+  top: 4.5%;
+  left: 80%;
+}
+
+/* =================== CHAT STYLES =================== */
+.chat-content {
+  display: flex;
+  flex-direction: column;
+  height: 92%;
+  padding: 8px;
+}
+
+#chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--hyl1a-window-text-back);
+  border: 2px solid var(--hyl1a-border-color);
+  padding: 8px;
+  margin-bottom: 8px;
+  max-height: 400px;
+  font-size: 14px;
+}
+
+.chat-message {
+  margin-bottom: 8px;
+  padding: 4px 6px;
+  background: rgba(123, 154, 228, 0.2);
+  border-left: 3px solid var(--hyl1a-border-color);
+  word-wrap: break-word;
+}
+
+.chat-message strong {
+  color: var(--hyl1a-button-color);
+  font-size: 13px;
+}
+
+.chat-message .chat-timestamp {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-left: 6px;
+}
+
+.chat-input-container {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+#chat-pseudo {
+  flex: 1;
+  border: 2px solid var(--hyl1a-border-color);
+  background: var(--hyl1a-window-text-back);
+  padding: 4px;
+  font-family: "PixelFont", monospace;
+  font-size: 14px;
+}
+
+#chat-message {
+  flex: 2;
+  border: 2px solid var(--hyl1a-border-color);
+  background: var(--hyl1a-window-text-back);
+  padding: 4px;
+  font-family: "PixelFont", monospace;
+  font-size: 14px;
+}
+
+#chat-send {
+  border: 2px solid var(--hyl1a-border-color);
+  background: var(--hyl1a-inactive-color);
+  color: var(--hyl1a-window-text-color);
+  font-weight: bold;
+  font-family: "PixelFont", monospace;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+#chat-send:hover {
+  background: var(--hyl1a-outer-color);
+}
+
+#chat-send:active {
+  background: var(--hyl1a-inner-color);
+}
+
+.chat-info {
+  font-size: 12px;
+  opacity: 0.7;
+  margin: 4px 0 0 0;
+  text-align: center;
+}
+
+/* =================== HALL OF FAME STYLES =================== */
+#halloffame-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.hof-signature {
+  background: rgba(160, 173, 212, 0.2);
+  border: 2px solid var(--hyl1a-border-color);
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.hof-signature strong {
+  color: var(--hyl1a-button-color);
+  font-size: 15px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.hof-signature p {
+  margin: 4px 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.hof-signature .hof-date {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-top: 6px;
+}
+
+.halloffame-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#hof-pseudo,
+#hof-message {
+  border: 2px solid var(--hyl1a-border-color);
+  background: var(--hyl1a-window-text-back);
+  padding: 6px;
+  font-family: "PixelFont", monospace;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#hof-message {
+  resize: vertical;
+  min-height: 80px;
+}
+
+#hof-submit {
+  border: 2px solid var(--hyl1a-border-color);
+  background: var(--hyl1a-inactive-color);
+  color: var(--hyl1a-window-text-color);
+  font-weight: bold;
+  font-family: "PixelFont", monospace;
+  padding: 8px 16px;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+#hof-submit:hover {
+  background: var(--hyl1a-outer-color);
+}
+
+#hof-submit:active {
+  background: var(--hyl1a-inner-color);
+}
+
+/* =================== TICKER HOME PAGE =================== */
+.hof-ticker {
+  position: fixed;
+  bottom: 45px;
+  left: 0;
+  width: 100%;
+  background: rgba(123, 154, 228, 0.95);
+  border-top: 2px solid var(--hyl1a-border-color);
+  border-bottom: 2px solid var(--hyl1a-border-color);
+  padding: 6px 0;
+  overflow: hidden;
+  z-index: 1500;
+  font-family: "PixelFont", monospace;
+}
+
+.ticker-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker-scroll 60s linear infinite;
+  padding-left: 100%;
+}
+
+.ticker-item {
+  display: inline-block;
+  padding: 0 30px;
+  font-size: 14px;
+}
+
+.ticker-item strong {
+  color: var(--hyl1a-button-color);
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* =================== RESPONSIVE - CHAT & HOF =================== */
+@media (max-width: 1024px) {
+  #window9,
+  #window10 {
+    position: static !important;
+    width: 95% !important;
+    height: auto !important;
+    left: 0 !important;
+    top: 0 !important;
+    right: auto !important;
+    margin: 15px auto !important;
+  }
+
+  #window9 { order: 9; }
+  #window10 { order: 10; }
+
+  #chat-messages {
+    max-height: 300px;
+  }
+
+  .hof-ticker {
+    bottom: 55px;
+  }
+
+  .ticker-item {
+    font-size: 12px;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .chat-input-container {
+    flex-direction: column;
+  }
+
+  #chat-pseudo,
+  #chat-message {
+    width: 100%;
+  }
+
+  #chat-send {
+    width: 100%;
+    padding: 8px;
+  }
+
+  #chat-messages {
+    max-height: 250px;
+    font-size: 13px;
+  }
+
+  .chat-message {
+    font-size: 12px;
+  }
+
+  .hof-ticker {
+    bottom: 50px;
+    padding: 4px 0;
+  }
+
+  .ticker-item {
+    font-size: 11px;
+    padding: 0 15px;
+  }
+
+  #halloffame-list {
+    max-height: 300px;
+  }
+
+  .hof-signature {
+    padding: 6px;
+  }
+
+  .hof-signature strong {
+    font-size: 14px;
+  }
+
+  .hof-signature p {
+    font-size: 13px;
+  }
+}
+
+/* Scrollbar pour chat et HOF */
+#chat-messages::-webkit-scrollbar,
+#halloffame-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+#chat-messages::-webkit-scrollbar-track,
+#halloffame-list::-webkit-scrollbar-track {
+  background: var(--hyl1a-scrollbar-outer-color);
+}
+
+#chat-messages::-webkit-scrollbar-thumb,
+#halloffame-list::-webkit-scrollbar-thumb {
+  background: var(--hyl1a-scrollbar-inner-color);
+  border-radius: 4px;
+}
+
+#chat-messages::-webkit-scrollbar-thumb:hover,
+#halloffame-list::-webkit-scrollbar-thumb:hover {
+  background: var(--hyl1a-scrollbar-inner-hover-color);
+}
+
+
+
+
+
+
+
+.construction-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffff0049; /* Jaune vif pour l'alerte */
+    color: #000;
+    text-align: center;
+    font-family: "PixelFont", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 0;
+    border-bottom: 2px solid #000;
+    z-index: 9999; /* Pour passer devant tout le reste */
+    letter-spacing: 2px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* On décale un peu le contenu du haut pour ne pas que la banderole cache ton titre */
+#site-title-img {
+    margin-top: 30px;
+}
+
+.construction-banner {
+    animation: blinker 1.5s linear infinite;
+}
+
+@keyframes blinker {
+    50% { opacity: 0.7; }
 }
